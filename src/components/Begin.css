@@ -1,5 +1,4 @@
 .begin__inner {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,8 +16,8 @@
 }
 .begin__button {
     position: relative;
-    z-index: 2;
-    width: 15rem;
+    z-index: 1;
+    padding: 1rem 2.5rem;
 }
 
 .blue-blob {

@@ -5,6 +5,7 @@
     --correct: #94d7a2;
     --wrong: #f8bcbc;
     --text: #293264;
+    --invalid: #dbdef0;
 }
 
 *,
@@ -125,7 +126,7 @@ body {
 }
 
 [class*="__inner"] {
-    max-width: 1150px;
+    max-width: 950px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -141,4 +142,8 @@ body {
     border-radius: 15px;
     padding: 1.2rem;
     cursor: pointer;
+}
+
+.button:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.5);
 }
