@@ -1,18 +1,14 @@
-import { nanoid } from "nanoid";
 import React from "react";
 import "./App.css";
+import { nanoid } from "nanoid";
 import Begin from "./components/Begin";
 import Quiz from "./components/Quiz";
+import blueBlob from "./images/blue-blob.svg";
+import yellowBlob from "./images/yellow-blob.svg";
 
 function App() {
     const [allQuestions, setAllQuestions] = React.useState([]);
-    const [isBegin, setIsBegin] = React.useState(true);
-    const [isQuiz, setIsQuiz] = React.useState(false);
-    console.log(allQuestions);
-    function handleClick() {
-        setIsBegin(false);
-        setIsQuiz(true);
-    }
+    const [gameStarted, setGameStarted] = React.useState(false);
 
     React.useEffect(() => {
         fetch(
@@ -22,14 +18,24 @@ function App() {
             .then((dataArray) => setAllQuestions(dataArray.results));
     }, []);
 
-    const questionElements = allQuestions.map((question) => (
-        <Quiz key={nanoid()} {...question} isQuiz={isQuiz} />
+    const questionElements = allQuestions.map((object) => (
+        <Quiz
+            key={nanoid()}
+            correctAnswer={object.correct_answer}
+            wrongAnswers={object.incorrect_answers}
+            question={object.question}
+        />
     ));
+
+    function start() {
+        setGameStarted(!gameStarted);
+    }
 
     return (
         <div className="wrapper">
-            <Begin handleClick={handleClick} isBegin={isBegin} />
-            {questionElements}
+            <img className="blue-blob" src={blueBlob} alt="Blue Blob" />
+            <img className="yellow-blob" src={yellowBlob} alt="Yellow Blob" />
+            {gameStarted ? questionElements : <Begin start={start} />}
         </div>
     );
 }

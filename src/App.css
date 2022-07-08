@@ -4,3 +4,17 @@
     flex-direction: column;
     justify-content: center;
 }
+.blue-blob {
+    position: absolute;
+    z-index: 1;
+    height: 15rem;
+    bottom: 0;
+    left: 0;
+}
+.yellow-blob {
+    position: absolute;
+    z-index: 1;
+    height: 20rem;
+    top: 0;
+    right: 0;
+}
